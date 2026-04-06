@@ -2,7 +2,9 @@
 
 **Python | NumPy | Pandas | Matplotlib | 2026**
 
-An end-to-end machine learning pipeline that predicts U.S. retail gasoline prices using real weekly data from the U.S. Energy Information Administration (EIA). The project covers data ingestion, cleaning, feature engineering, exploratory analysis, model training from scratch, and evaluation all without high-level ML libraries like scikit-learn.
+This project is an end-to-end machine learning pipeline that predicts U.S. gas prices using real weekly data from the U.S. Energy Information Administration (EIA).
+
+I built this from scratch to better understand how time-series data behaves in practice — from cleaning messy real-world data to engineering features and training models without relying on high-level ML libraries like scikit-learn.
 
 ---
 
@@ -13,7 +15,17 @@ An end-to-end machine learning pipeline that predicts U.S. retail gasoline price
 | Linear Regression | 0.9686 | $0.089 | $0.061 | 1.90% |
 | Random Forest | 0.9648 | $0.094 | $0.067 | 2.04% |
 
-> Test set: 3,275 observations across 20 regions, January 2023 – March 2026.
+> Tested on 3,275 observations across 20 regions, January 2023 – March 2026.
+
+---
+
+## What I Did
+
+- Cleaned and reshaped ~30k rows of raw EIA data
+- Built 20+ features including lag variables and rolling averages
+- Explored trends like seasonality and regional differences
+- Implemented Linear Regression and Random Forest from scratch (NumPy only)
+- Evaluated models using multiple metrics and visualizations
 
 ---
 
@@ -23,47 +35,17 @@ An end-to-end machine learning pipeline that predicts U.S. retail gasoline price
 - **URL:** https://www.eia.gov/dnav/pet/pet_pri_gnd_a_epmr_pte_dpgal_w.htm
 - **Coverage:** August 1990 – March 2026 | Weekly | Regular Conventional Gasoline
 - **Regions:** 20 — U.S. Average, East Coast, New England, Central Atlantic, Lower Atlantic, Midwest, Gulf Coast, Rocky Mountain, West Coast, and 11 state/city series
-- **Raw rows:** 29,631 (after melting wide → long format)
-- **Model-ready rows:** 28,591 (after lag feature computation)
 
 ---
+## Why This Project Matters
 
-## Project Structure
+One of the most interesting takeaways was that a simple linear model outperformed a more complex Random Forest.
 
-```
-Gas Price/
-├── run_pipeline.py              # Run all 5 steps end-to-end
-├── data/
-│   ├── gaspricesexcel.csv       # Raw EIA download
-│   ├── gas_prices_raw.csv       # Cleaned long-format data
-│   ├── gas_prices_features.csv  # Engineered features
-│   ├── test_predictions.csv     # Model predictions on test set
-│   ├── model_metrics.csv        # MAE, RMSE, R², MAPE per model
-│   └── models/
-│       ├── linear_regression.npz
-│       └── scaler.npz
-├── plots/
-│   ├── eda_01_national_timeseries.png
-│   ├── eda_02_regional_comparison.png
-│   ├── eda_03_monthly_seasonality.png
-│   ├── eda_04_correlation_heatmap.png
-│   ├── eval_01_scatter.png
-│   ├── eval_02_timeseries_predictions.png
-│   ├── eval_03_residuals.png
-│   └── eval_04_metrics_comparison.png
-└── scripts/
-    ├── 01_data_collection.py    # Load & melt EIA CSV
-    ├── 02_data_cleaning.py      # Clean, validate, feature engineering
-    ├── 03_eda.py                # Exploratory data analysis plots
-    ├── 04_model_training.py     # Train LR & RF from scratch
-    └── 05_model_evaluation.py  # Evaluation plots & metrics
-```
-
----
+This showed that gas prices are highly driven by recent historical values (lag features), making the problem more linear than expected. Instead of overcomplicating the model, the data itself pointed toward a simpler solution
 
 ## How to Run
 
-**Requirements:** Python 3.8+, NumPy, Pandas, Matplotlib (no scikit-learn needed)
+**Requirements:** Python 3.8+, NumPy, Pandas, Matplotlib 
 
 ```bash
 # Clone and navigate to project
@@ -147,8 +129,12 @@ Four evaluation plots cover:
 | NumPy | Matrix math, model implementation |
 | Matplotlib | All visualisations (8 publication-quality plots) |
 | EIA Open Data | Real weekly gasoline price data |
+| Tableau Public | Dashboard
 
 ---
+## Notes
+
+This project was a way for me to go beyond using libraries and actually understand how models work under the hood. Building everything from scratch helped me get more comfortable with the math and tradeoffs behind different approaches.
 
 ## Author
 
