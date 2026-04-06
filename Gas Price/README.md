@@ -2,7 +2,7 @@
 
 **Python | NumPy | Pandas | Matplotlib | 2026**
 
-An end-to-end machine learning pipeline that predicts U.S. retail gasoline prices using real weekly data from the U.S. Energy Information Administration (EIA). The project covers data ingestion, cleaning, feature engineering, exploratory analysis, model training from scratch, and evaluation — all without high-level ML libraries like scikit-learn.
+An end-to-end machine learning pipeline that predicts U.S. retail gasoline prices using real weekly data from the U.S. Energy Information Administration (EIA). The project covers data ingestion, cleaning, feature engineering, exploratory analysis, model training from scratch, and evaluation all without high-level ML libraries like scikit-learn.
 
 ---
 
