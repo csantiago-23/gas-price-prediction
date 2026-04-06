@@ -133,6 +133,8 @@ Four evaluation plots cover:
 **The strongest predictors** are the lag features. Gas prices exhibit strong autocorrelation: this week's price is the best predictor of next week's price. The year-ago lag (`lag_52w`) captures seasonal cycles. The rolling mean captures medium-term trend momentum.
 
 **Seasonality is real but modest.** Summer prices average about $0.10–$0.15/gallon higher than winter prices — a consistent pattern driven by summer-blend fuel requirements and increased driving demand.
+<img width="2400" height="1600" alt="U S  Gas Price Analysis   ML Prediction Dashboard " src="https://github.com/user-attachments/assets/2ac51566-61a1-47b7-b1bd-1dd97799b20d" />
+
 
 ---
 
